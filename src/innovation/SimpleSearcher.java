@@ -5,19 +5,14 @@
  */
 package innovation;
 
-import innovation.utils.Utils;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import innovation.db.RegistryDAO;
 import innovation.models.Registry;
 import java.util.ArrayList;
 import innovation.utils.Utils;
-import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 /**
  *
