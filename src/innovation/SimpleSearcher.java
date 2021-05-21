@@ -14,6 +14,7 @@ import innovation.models.Registry;
 import java.util.ArrayList;
 import innovation.utils.Utils;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -40,13 +41,19 @@ public class SimpleSearcher {
         while (stop != true) {
             System.out.println("");
             System.out.println("");
-            System.out.println("##### MAIN MENU #####");
+            System.out.println("####### ACTIONS #######");
             System.out.println("- Select an action -");
             System.out.println("[1] List all data");
             System.out.println("[2] Query data");
             System.out.println("[3] Load new data file");
             System.out.println("[4] Exit");
-            opcion = sn.nextInt();
+            try {
+                opcion = sn.nextInt();
+
+            } catch (InputMismatchException e) {
+                System.out.println("Select an option inserting a number between 1 and 4");
+                opcion = 0;
+            }
             sn.nextLine();
 
             switch (opcion) {
@@ -70,7 +77,7 @@ public class SimpleSearcher {
                     Utils.printRegistryAsTable(result);
                     break;
                 case 3:
-                    System.out.println("File path:");
+                    System.out.println("Insert new file path:");
                     String newFile = sn.nextLine();
                     loadRegistros(newFile);
                     System.out.println("New data was loaded!");
@@ -79,17 +86,21 @@ public class SimpleSearcher {
                     stop = true;
                     break;
                 default:
-                    System.out.println("Selecciona una opción válida");
+                    break;
             }
 
         }
+    }
+
+    void menu() {
+
     }
 
     void loadRegistros(String dbPath) {
         File dbFile;
         try {
             dbFile = new File(dbPath);
-            this.registros = RegistryDAO.loadAllFromDatabase(dbFile);
+            this.registros = RegistryDAO.loadAllFromFile(dbFile);
         } catch (Exception e) {
             System.out.println("Couldn't load DB");
         }

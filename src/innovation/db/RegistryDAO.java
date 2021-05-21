@@ -31,15 +31,15 @@ public class RegistryDAO extends Registry {
         this.contact = contact;
     }
 
-    public static List<Registry> loadAllFromDatabase(File db) {
+    public static List<Registry> loadAllFromFile(File dbFile) {
         List<Registry> registros = new ArrayList<Registry>();
-        System.out.println("Starting to read DB");
         try {   //creates a new file instance  
             Date start = new Date();
-            FileReader fr = new FileReader(db);   //reads the file  
+            FileReader fr = new FileReader(dbFile);   //reads the file  
             BufferedReader br = new BufferedReader(fr);    //constructs a string buffer with no characters  
+            System.out.println("Reading from file...");
             String line;
-            
+
             while ((line = br.readLine()) != null) {
 
                 if (!line.isEmpty()) {
@@ -49,11 +49,10 @@ public class RegistryDAO extends Registry {
             fr.close();
             Date end = new Date();
 
-            System.out.println("DB loaded in " + (end.getTime() - start.getTime()) / 1000 + " seconds");
+            System.out.println("Data loaded in " + (end.getTime() - start.getTime()) / 1000 + " seconds");
             return registros;//closes the stream and release the resourc/returns 
         } catch (Exception e) {
-            System.out.println("SALTA EL CATCH");
-            e.printStackTrace();
+            System.out.println("There was an error loading the file");
             return new ArrayList<Registry>();
         }
     }
