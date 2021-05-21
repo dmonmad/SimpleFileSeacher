@@ -6,7 +6,7 @@ Prueba técnica para Innovation Strategies. Realizado con un proyecto de Java si
 
 ## Instalación
 
-Se puede descargar el proyecto y compilarlo con javac sin problema pues no tiene dependencia externa alguna. Se incluye el archivo .jar para un uso más rápido.
+Se puede descargar el proyecto y compilarlo con javac sin problema pues no tiene dependencia externa alguna. Se incluye el archivo .jar para un uso más rápido. También se incluye un archivo .csv con 200000 registros con formato 'Nombre | Ciudad | Contacto'.
 
 
 ## Uso
