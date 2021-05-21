@@ -46,16 +46,24 @@ public class SimpleSearcher {
                 opcion = sn.nextInt();
 
             } catch (InputMismatchException e) {
-                System.out.println("Select an option inserting a number between 1 and 4");
+                System.out.println("-> Select an option inserting a number between 1 and 4");
                 opcion = 0;
             }
             sn.nextLine();
 
             switch (opcion) {
                 case 1:
+                    if(this.registros.size() <= 0){
+                        System.out.println("-> You should load some data first");
+                        break;
+                    }
                     Utils.printRegistryAsTable(registros);
                     break;
                 case 2:
+                    if(this.registros.size() <= 0){
+                        System.out.println("-> You should load some data first");
+                        break;
+                    }
                     System.out.println("Name:");
                     String name = sn.nextLine();
                     System.out.println("City:");
@@ -72,10 +80,10 @@ public class SimpleSearcher {
                     Utils.printRegistryAsTable(result);
                     break;
                 case 3:
-                    System.out.println("Insert new file path:");
+                    System.out.println("-> Insert new file path:");
                     String newFile = sn.nextLine();
                     loadRegistros(newFile);
-                    System.out.println("New data was loaded!");
+                    System.out.println("-> New data was loaded!");
                     break;
                 case 4:
                     stop = true;

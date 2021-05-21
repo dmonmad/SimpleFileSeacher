@@ -51,7 +51,7 @@ public class Utils {
             output.write("-----------------------------------------------------------------------------------------------\n");
             output.flush();
         } catch (Exception e) {
-            System.out.println("Data couldn't be displayed");
+            System.out.println("-> Data couldn't be displayed");
         }
 
     }

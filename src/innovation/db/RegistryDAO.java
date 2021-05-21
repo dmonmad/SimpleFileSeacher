@@ -34,7 +34,7 @@ public class RegistryDAO extends Registry {
             Date start = new Date();
             FileReader fr = new FileReader(dbFile);   //reads the file  
             BufferedReader br = new BufferedReader(fr);    //constructs a string buffer with no characters  
-            System.out.println("Reading from file...");
+            System.out.println("-> Reading from file...");
             String line;
 
             while ((line = br.readLine()) != null) {
@@ -46,10 +46,10 @@ public class RegistryDAO extends Registry {
             fr.close();
             Date end = new Date();
 
-            System.out.println("Data loaded in " + (end.getTime() - start.getTime()) / 1000 + " seconds");
+            System.out.println("-> Data loaded in " + (end.getTime() - start.getTime()) / 1000 + " seconds");
             return registros;//closes the stream and release the resourc/returns 
         } catch (Exception e) {
-            System.out.println("There was an error loading the file");
+            System.out.println("-> There was an error loading the file");
             return new ArrayList<Registry>();
         }
     }
